@@ -1,5 +1,7 @@
 <template>
-  <main>
-    <router-view />
-  </main>
+  <router-view />
 </template>
+
+<style>
+@import './assets/global.scss';
+</style>

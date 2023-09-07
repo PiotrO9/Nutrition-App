@@ -2,10 +2,12 @@
     <h1>index</h1>
 </template>
 
-<script>
-export default {
+<script setup>
+const colorMode = useColorMode()
 
-}
+onMounted(() => {
+    console.log(colorMode.value)
+})
 </script>
 
 <style></style>
