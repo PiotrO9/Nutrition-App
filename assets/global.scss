@@ -1,8 +1,10 @@
-@import "./styles/fonts";
+@import "@/assets/styles/fonts";
 @import "./styles/mixins";
 @import "./styles/breakpoints";
 
-* {
+*,
+*:before,
+*:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,4 +14,14 @@
 html, body, #__nuxt {
     width: 100vw;
     height: 100vh;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
 }

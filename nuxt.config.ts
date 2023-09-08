@@ -1,6 +1,5 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ["~/assets/global.scss"],
   modules: [
     "@nuxtjs/color-mode",
     "nuxt-icon",
@@ -14,6 +13,21 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  css: ["@/assets/global.scss"],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+              @import "@/assets/styles/mixins.scss";
+              @import "@/assets/styles/fonts.scss";
+              @import "@/assets/styles/breakpoints.scss";
+              @import "@/assets/styles/variables.scss";
+            `,
+        },
+      },
+    },
+  },
   colorMode: {
     preference: "system",
     fallback: "light",
