@@ -56,9 +56,9 @@ const toggleMobileMenuState = (): void => {
     flex-direction: row;
     justify-content: space-between;
     padding: 10px 15px;
+    position: relative;
     background-color: $pure-white;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    position: relative;
 
     &__app-title {
         @include font-style(32px, 700);
@@ -87,20 +87,20 @@ const toggleMobileMenuState = (): void => {
 
             a {
                 @include font-style(24px, 500);
-                font-family: $Raleway;
+                position: relative;
                 text-align: center;
+                font-family: $Raleway;
                 color: $pure-black;
                 cursor: pointer;
-                position: relative;
 
                 &::after {
                     content: '';
-                    position: absolute;
-                    background-color: $deepSkyBlue;
                     height: 3px;
                     width: 0;
+                    position: absolute;
                     left: 0;
                     bottom: -10px;
+                    background-color: $deepSkyBlue;
                     transition: 0.3s;
                 }
 
@@ -116,10 +116,10 @@ const toggleMobileMenuState = (): void => {
     &__burger {
         @include flex-center;
         @include square-size(50px);
-        flex-direction: column;
-        gap: 4px;
         display: none;
+        flex-direction: column;
         align-self: center;
+        gap: 4px;
         z-index: 2;
         cursor: pointer;
 
@@ -131,20 +131,16 @@ const toggleMobileMenuState = (): void => {
             .bar {
                 transition: transform 0.5s, opacity 0.5s;
 
-                &:nth-child(1) {
-                    @include breakpoint-down(md) {
+                @include breakpoint-down(md) {
+                    &:nth-child(1) {
                         transform: rotate(-45deg) translateX(-4px) translateY(10px);
                     }
-                }
 
-                &:nth-child(2) {
-                    @include breakpoint-down(md) {
+                    &:nth-child(2) {
                         opacity: 0;
                     }
-                }
 
-                &:nth-child(3) {
-                    @include breakpoint-down(md) {
+                    &:nth-child(3) {
                         transform: rotate(45deg) translateX(-4px) translateY(-10px);
                     }
                 }
@@ -152,8 +148,8 @@ const toggleMobileMenuState = (): void => {
         }
 
         .bar {
-            height: 6px;
             width: 40px;
+            height: 6px;
             background-color: $deepSkyBlue;
             border-radius: 12px;
             transition: transform 0.5s;
@@ -162,26 +158,24 @@ const toggleMobileMenuState = (): void => {
 }
 
 .overlay {
+    display: none;
+
     @include breakpoint-down(md) {
-        height: fit-content;
         width: 100vw;
-        position: relative;
+        height: fit-content;
+        position: absolute;
+        inset: 0;
         display: flex;
         justify-content: flex-end;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
         background-color: rgba(0, 0, 0, 0.7);
         z-index: 1;
 
         .mobile-menu {
             height: 100vh;
             width: min(200px, 100vw);
-            background-color: $pure-white;
             padding-top: 60px;
             padding-left: 4px;
+            background-color: $pure-white;
 
             &__menu {
                 display: flex;
@@ -192,7 +186,7 @@ const toggleMobileMenuState = (): void => {
                     a {
                         @include font-style(24px, 500);
                         font-family: $Raleway;
-                        color: $deepSkyBlue;
+                        color: $pure-black;
                     }
                 }
             }
