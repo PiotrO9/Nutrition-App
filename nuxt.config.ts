@@ -8,7 +8,8 @@ export default defineNuxtConfig({
       "@nuxtjs/google-fonts",
       {
         families: {
-          Inter: [400, 700],
+          Inter: [300, 400, 500, 700],
+          Raleway: [300, 500, 700],
         },
       },
     ],

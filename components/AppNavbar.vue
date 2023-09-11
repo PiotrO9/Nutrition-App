@@ -19,11 +19,20 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
-
     </nav>
     <div v-if="isMobileMenuOpen" class="overlay">
         <aside class="mobile-menu">
-            <span>.</span>
+            <ul class="mobile-menu__menu">
+                <li class="mobile-menu__menu--item">
+                    <a href="#">Baza produktów</a>
+                </li>
+                <li class="mobile-menu__menu--item">
+                    <a href="#">Premium</a>
+                </li>
+                <li class="mobile-menu__menu--item">
+                    <a href="#">Zaloguj</a>
+                </li>
+            </ul>
         </aside>
     </div>
 </template>
@@ -41,7 +50,7 @@ const toggleMobileMenuState = (): void => {
 
 <style lang="scss" scoped>
 .navbar {
-    widows: 100%;
+    width: 100%;
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -54,7 +63,13 @@ const toggleMobileMenuState = (): void => {
     &__app-title {
         @include font-style(32px, 700);
         @include unselectable;
+        @include flex-center;
         color: $deepSkyBlue;
+        text-align: center;
+
+        @include breakpoint-down(xs) {
+            font-size: 24px;
+        }
     }
 
     &__menu {
@@ -71,7 +86,8 @@ const toggleMobileMenuState = (): void => {
             height: 100%;
 
             a {
-                @include font-style(24px, 300);
+                @include font-style(24px, 500);
+                font-family: $Raleway;
                 text-align: center;
                 color: $pure-black;
                 cursor: pointer;
@@ -105,6 +121,7 @@ const toggleMobileMenuState = (): void => {
         display: none;
         align-self: center;
         z-index: 2;
+        cursor: pointer;
 
         @include breakpoint-down(md) {
             display: flex;
@@ -145,23 +162,41 @@ const toggleMobileMenuState = (): void => {
 }
 
 .overlay {
-    height: fit-content;
-    width: 100vw;
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
+    @include breakpoint-down(md) {
+        height: fit-content;
+        width: 100vw;
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
 
-    .mobile-menu {
-        height: 100vh;
-        width: 200px;
-        background-color: $pure-white;
+        .mobile-menu {
+            height: 100vh;
+            width: min(200px, 100vw);
+            background-color: $pure-white;
+            padding-top: 60px;
+            padding-left: 4px;
+
+            &__menu {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                &--item {
+                    a {
+                        @include font-style(24px, 500);
+                        font-family: $Raleway;
+                        color: $deepSkyBlue;
+                    }
+                }
+            }
+        }
     }
 }
 </style>
