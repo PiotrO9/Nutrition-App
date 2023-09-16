@@ -52,12 +52,62 @@
                     </p>
                 </div>
             </section>
+            <section class="section">
+                <div class="section__text-only">
+                    <span class="heading">
+                        Narzędzia dostosowane do Twoich celów
+                    </span>
+                    <p class="description">
+                        Próbujesz schudnąć, poprawić kondycję, obniżyć BMI lub zadbać o swoje zdrowie? Dajemy Ci odpowiednie
+                        narzędzia do osiągnięcia Twoich celów.
+                    </p>
+                    <div class="section__text-only--articles">
+                        <article class="article">
+                            <div class="article__wrapper">
+                                <Icon name="bx:book" />
+                            </div>
+                            <span class="article__heading">
+                                Zdobywaj wiedzę. Monitoruj. Ulepszaj.
+                            </span>
+                            <span class="article__description">
+                                Prowadzenie dzienniczka posiłków pomaga zrozumieć zwyczaje i zwiększa prawdopodobieństwo
+                                osiągnięcia celów.
+                            </span>
+                        </article>
+                        <article class="article">
+                            <div class="article__wrapper">
+                                <Icon name="fa6-solid:bowl-food" />
+                            </div>
+                            <span class="article__heading">
+                                Uproszczenie dodawania wpisów </span>
+                            <span class="article__description">
+                                Skanuj kody kreskowe, zapisuj posiłki i przepisy kulinarne, a także korzystaj z narzędzi do
+                                szybkiego i łatwego monitorowania posiłków.
+                            </span>
+                        </article>
+                        <article class="article">
+                            <div class="article__wrapper">
+                                <Icon name="fa-solid:running" />
+                            </div>
+                            <span class="article__heading">
+                                Zachowaj motywację.
+                            </span>
+                            <span class="article__description">
+                                Dołącz do największej na świecie społeczności fitness i zyskaj dostęp do porad i wsparcia 24
+                                godziny na dobę, siedem dni w tygodniu.
+                            </span>
+                        </article>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
+    <AppFooter />
 </template>
 
 <script setup>
 import AppNavbar from '~/components/AppNavbar.vue';
+import AppFooter from '~/components/AppFooter.vue';
 
 </script>
 
@@ -165,7 +215,7 @@ import AppNavbar from '~/components/AppNavbar.vue';
 
                         &__input {
                             @include flex-center;
-                            justify-content: start;
+                            justify-content: flex-start;
                             gap: 10px;
                             position: absolute;
                             top: 40px;
@@ -211,14 +261,57 @@ import AppNavbar from '~/components/AppNavbar.vue';
                         }
                     }
                 }
+            }
 
-                &::before {
-                    height: 50px;
-                    width: 50px;
-                    background-color: red;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
+            &__text-only {
+                @include flex-center;
+                flex-direction: column;
+                text-align: center;
+                margin-bottom: 90px;
+
+                .heading {
+                    @include font-style(48px, 700);
+                    max-width: 900px;
+                }
+
+                .description {
+                    @include font-style(16px, 300);
+                    margin-top: 30px;
+                    max-width: 500px;
+                }
+
+                &--articles {
+                    display: flex;
+                    flex-direction: row;
+                    margin-top: 60px;
+                    gap: 50px;
+
+                    .article {
+                        @include flex-center;
+                        flex-direction: column;
+                        max-width: 300px;
+
+                        &__wrapper {
+                            @include square-size(150px);
+                            @include flex-center;
+                            border-radius: 50%;
+                            box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.25);
+
+                            svg {
+                                @include square-size(60px);
+                            }
+                        }
+
+                        &__heading {
+                            @include font-style(24px, 700);
+                            margin-top: 30px;
+                        }
+
+                        &__description {
+                            @include font-style(16px, 300);
+                            margin-top: 30px;
+                        }
+                    }
                 }
             }
         }

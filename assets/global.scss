@@ -16,6 +16,14 @@ html, body, #__nuxt {
     height: 100vh;
 }
 
+#__nuxt {
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 ul {
     list-style-type: none;
 }
