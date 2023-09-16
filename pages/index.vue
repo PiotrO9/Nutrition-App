@@ -127,7 +127,21 @@ import AppFooter from '~/components/AppFooter.vue';
             flex-direction: row;
             width: 100%;
             margin-top: 60px;
-            margin-bottom: 130px;
+            margin-bottom: 100px;
+
+            @include breakpoint-down(lg) {
+                flex-direction: column;
+                height: max-content;
+                align-items: center;
+            }
+
+            &:nth-child(2) {
+                margin-top: 150px;
+
+                @include breakpoint-down(lg) {
+                    flex-direction: column-reverse;
+                }
+            }
 
             &__text-part {
                 display: flex;
@@ -179,7 +193,6 @@ import AppFooter from '~/components/AppFooter.vue';
                 background-repeat: no-repeat;
                 position: relative;
 
-
                 .bg-stain {
                     background-color: $goldenYellow;
                     position: absolute;
@@ -189,7 +202,13 @@ import AppFooter from '~/components/AppFooter.vue';
                 &.section-one {
                     background-image: url("../assets/images/owsianka.png");
                     background-size: 100%;
+                    height: 400px;
 
+                    @include breakpoint-down(lg) {
+                        width: 100%;
+                        background-size: 50%;
+                        margin-top: 100px;
+                    }
 
                     .bg-stain {
                         height: 450px;
@@ -198,6 +217,10 @@ import AppFooter from '~/components/AppFooter.vue';
                         left: 35%;
                         transform: rotate(38deg);
                         border-radius: 70px;
+
+                        @include breakpoint-down(lg) {
+                            left: 42%;
+                        }
                     }
                 }
 
@@ -206,6 +229,11 @@ import AppFooter from '~/components/AppFooter.vue';
                     background-size: 130%;
                     background-position-y: 80px;
                     height: 600px;
+
+                    @include breakpoint-down(lg) {
+                        left: 5%;
+                        margin-top: 100px;
+                    }
 
                     .bg-stain {
                         height: 420px;
@@ -267,17 +295,24 @@ import AppFooter from '~/components/AppFooter.vue';
                 @include flex-center;
                 flex-direction: column;
                 text-align: center;
-                margin-bottom: 90px;
 
                 .heading {
                     @include font-style(48px, 700);
                     max-width: 900px;
+
+                    @include breakpoint-down(lg) {
+                        max-width: 600px;
+                    }
                 }
 
                 .description {
                     @include font-style(16px, 300);
                     margin-top: 30px;
                     max-width: 500px;
+
+                    @include breakpoint-down(lg) {
+                        max-width: 350px;
+                    }
                 }
 
                 &--articles {
@@ -285,6 +320,10 @@ import AppFooter from '~/components/AppFooter.vue';
                     flex-direction: row;
                     margin-top: 60px;
                     gap: 50px;
+
+                    @include breakpoint-down(lg) {
+                        flex-direction: column;
+                    }
 
                     .article {
                         @include flex-center;
