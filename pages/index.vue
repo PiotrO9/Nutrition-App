@@ -21,6 +21,7 @@
                 </div>
                 <div class="section__image-part section-one">
                     <div class="bg-stain">
+                        <img src="../assets/images/owsianka.png">
                     </div>
                 </div>
             </section>
@@ -33,6 +34,7 @@
                                 Strawberry
                             </span>
                         </div>
+                        <img class="bg-stain__image" src="../assets/images/truskawa.png">
                         <div class="bg-stain__circle-chart">
                             <img class="image" src="../assets/icons/circle-chart.svg" alt="">
                             <span>
@@ -120,6 +122,7 @@ import AppFooter from '~/components/AppFooter.vue';
 
     main {
         max-width: 1024px;
+        width: 100%;
 
         .section {
             display: flex;
@@ -152,17 +155,31 @@ import AppFooter from '~/components/AppFooter.vue';
                 width: max-content;
                 max-width: 55%;
 
+                @include breakpoint-down(sm) {
+                    max-width: 100%;
+                }
+
                 .heading {
                     @include font-style(56px, 800);
                     color: $pure-black;
                     text-align: center;
                     word-wrap: break-word;
+
+                    @include breakpoint-down(sm) {
+                        @include font-style(32px, 800);
+                        padding: 0px 5px;
+                    }
                 }
 
                 .description {
                     @include font-style(16px, 300);
                     text-align: center;
                     max-width: 330px;
+
+                    @include breakpoint-down(sm) {
+                        font-size: 14px;
+                        max-width: 260px;
+                    }
 
                     span {
                         font-weight: 700;
@@ -178,20 +195,29 @@ import AppFooter from '~/components/AppFooter.vue';
                     height: 60px;
                     cursor: pointer;
 
+                    @include breakpoint-down(sm) {
+                        width: 290px;
+                        height: 50px;
+                    }
+
                     span {
                         @include font-style(24px, 700);
                         color: $pure-white;
+
+                        @include breakpoint-down(sm) {
+                            font-size: 18px;
+                        }
                     }
                 }
             }
 
             &__image-part {
                 width: 45%;
-                background-image: url("../assets/images/owsianka.png");
-                background-position: center;
-                background-size: 100%;
-                background-repeat: no-repeat;
                 position: relative;
+
+                @include breakpoint-down(lg) {
+                    width: 100%;
+                }
 
                 .bg-stain {
                     background-color: $goldenYellow;
@@ -200,39 +226,44 @@ import AppFooter from '~/components/AppFooter.vue';
                 }
 
                 &.section-one {
-                    background-image: url("../assets/images/owsianka.png");
-                    background-size: 100%;
                     height: 400px;
+                    display: flex;
+                    justify-content: center;
 
                     @include breakpoint-down(lg) {
                         width: 100%;
                         background-size: 50%;
                         margin-top: 100px;
+                        display: flex;
+                        justify-content: center;
                     }
 
                     .bg-stain {
+                        @include flex-center;
                         height: 450px;
                         width: 152px;
-                        top: -20px;
-                        left: 35%;
                         transform: rotate(38deg);
                         border-radius: 70px;
 
-                        @include breakpoint-down(lg) {
-                            left: 42%;
+                        img {
+                            width: 450px;
+                            height: 300px;
                         }
                     }
                 }
 
                 &.section-two {
-                    background-image: url("../assets/images/truskawa.png");
-                    background-size: 130%;
-                    background-position-y: 80px;
-                    height: 600px;
+                    height: 500px;
+                    display: flex;
 
                     @include breakpoint-down(lg) {
-                        left: 5%;
                         margin-top: 100px;
+                        justify-content: center;
+                        margin-right: 15%;
+                    }
+
+                    @include breakpoint-down(sm) {
+                        margin-right: 5%;
                     }
 
                     .bg-stain {
@@ -240,6 +271,11 @@ import AppFooter from '~/components/AppFooter.vue';
                         width: 280px;
                         position: absolute;
                         border-radius: 55px;
+
+                        @include breakpoint-down(sm) {
+                            height: 320px;
+                            width: 230px;
+                        }
 
                         &__input {
                             @include flex-center;
@@ -261,6 +297,22 @@ import AppFooter from '~/components/AppFooter.vue';
 
                             span {
                                 @include font-style(18px, 700);
+                            }
+                        }
+
+                        &__image {
+                            position: absolute;
+                            bottom: -100px;
+                            left: -50px;
+                            width: 550px;
+                            height: 450px;
+
+                            @include breakpoint-down(sm) {
+                                height: 280px;
+                                width: 330px;
+                                bottom: -80px;
+                                left: 0;
+                                right: -50px;
                             }
                         }
 
