@@ -16,6 +16,10 @@ html, body, #__nuxt {
     height: 100vh;
 }
 
+body {
+    min-height: 100vh;
+}
+
 #__nuxt {
     overflow-x: hidden;
 

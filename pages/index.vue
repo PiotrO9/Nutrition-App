@@ -264,6 +264,7 @@ import AppFooter from '~/components/AppFooter.vue';
 
                     @include breakpoint-down(sm) {
                         margin-right: 5%;
+                        height: 300px;
                     }
 
                     .bg-stain {
