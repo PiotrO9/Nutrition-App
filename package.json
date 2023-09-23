@@ -20,7 +20,11 @@
     "sass": "^1.66.1"
   },
   "dependencies": {
+    "@nuxt/bridge": "^0.10.1",
+    "@nuxt/http": "^0.6.4",
+    "@nuxtjs/supabase": "^1.1.2",
     "@pinia/nuxt": "^0.4.11",
+    "@supabase/supabase-js": "^2.36.0",
     "axios": "^1.5.0",
     "node-sass": "^9.0.0",
     "pinia": "^2.1.6",

@@ -11,7 +11,7 @@
                 <a href="#">Premium</a>
             </li>
             <li class="navbar__menu--item">
-                <a href="#">Zaloguj</a>
+                <a href="/login">Zaloguj</a>
             </li>
         </ul>
         <div class="navbar__burger" :class="{ active: isMobileMenuOpen }" @click="toggleMobileMenuState">

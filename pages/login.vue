@@ -6,11 +6,11 @@
                 Logowanie
             </span>
             <div class="wrapper__input-wrapper">
-                <input class="wrapper__input-wrapper--input" type="text" placeholder="Adres E-mail">
+                <input class="wrapper__input-wrapper--input" type="text" placeholder="Adres E-mail" v-model="email">
             </div>
             <div class="wrapper__input-wrapper">
                 <input class="wrapper__input-wrapper--input" :type="isPasswordVisible ? 'text' : 'password'"
-                    placeholder="Hasło">
+                    placeholder="Hasło" v-model="password">
                 <Icon v-if="isPasswordVisible" class="wrapper__input-wrapper--icon" name="basil:eye-solid"
                     @click="switchPasswordVisibility" />
                 <Icon v-else class="wrapper__input-wrapper--icon" name="basil:eye-closed-solid"
@@ -19,7 +19,7 @@
             <div class="wrapper__reminder">
                 <a class="wrapper__reminder--text" href="#">Nie pamietasz hasła?</a>
             </div>
-            <button class="wrapper__login-email">
+            <button class="wrapper__login-email" @click="login">
                 ZALOGUJ SIĘ
             </button>
             <span class="wrapper__divider-text">
@@ -28,13 +28,13 @@
             <button class="wrapper__login-google">
                 <Icon class="wrapper__login-google--icon" name="devicon:google" />
                 <span class="wrapper__login-google--text">
-                    Kontunuuj z Google
+                    Zaloguj z Google
                 </span>
             </button>
             <button class="wrapper__login-google">
                 <Icon class="wrapper__login-google--icon" name="jam:discord" />
                 <span class="wrapper__login-google--text">
-                    Kontunuuj z Discord
+                    Zaloguj z Discord
                 </span>
             </button>
             <div class="wrapper__register">
@@ -52,13 +52,31 @@
 
 <script setup lang="ts">
 import { Ref } from "vue";
+import { useAuthStore } from "~/stores/auth";
 
+const user = useSupabaseUser()
+const store = useAuthStore();
+
+const email: Ref<string> = ref<string>('');
+const password: Ref<string> = ref<string>('');
 const isPasswordVisible: Ref<boolean> = ref<boolean>(false);
 
 const switchPasswordVisibility = (): void => {
     isPasswordVisible.value = !isPasswordVisible.value;
 }
 
+const login = () => {
+    store.logIn(email.value, password.value);
+}
+
+onMounted(() => {
+    watchEffect(() => {
+        if (!user.value) {
+            console.log("Wylogowano")
+            navigateTo('/')
+        }
+    })
+})
 </script>
 
 <style scoped lang="scss">
@@ -190,4 +208,4 @@ $maxWrapperContentWidth: 375px;
         }
     }
 }
-</style>
+</style>~/stores/auth

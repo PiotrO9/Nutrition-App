@@ -2,7 +2,9 @@
     <nav class="navbar">
         <div class="navbar__wrapper">
             <span class="navbar__wrapper--title">
-                Nutrition App
+                <a href="/">
+                    Nutrition App
+                </a>
             </span>
             <menu class="navbar__wrapper--menu">
                 <a href="/login" class="login">

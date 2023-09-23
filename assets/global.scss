@@ -21,7 +21,7 @@ body {
 }
 
 #__nuxt {
-    overflow-x: hidden;
+    position: relative;
 
     &::-webkit-scrollbar {
         display: none;

@@ -1,9 +1,11 @@
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: [
     "@nuxtjs/color-mode",
     "nuxt-icon",
+    "@nuxtjs/supabase",
     "@nuxt/image",
+    "@pinia/nuxt",
     [
       "@nuxtjs/google-fonts",
       {
@@ -47,5 +49,9 @@ export default defineNuxtConfig({
       lg: 1024,
       xl: 1280,
     },
+  },
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_KEY,
   },
 });
