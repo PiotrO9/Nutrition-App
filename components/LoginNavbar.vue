@@ -5,19 +5,16 @@
                 Nutrition App
             </span>
             <menu class="navbar__wrapper--menu">
-                <a href="" class="login">
+                <a href="/login" class="login">
                     Zaloguj się
                 </a>
-                <a href="" class="register">
+                <a href="/register" class="register">
                     Zarejestruj się
                 </a>
             </menu>
         </div>
     </nav>
 </template>
-
-<script setup lang="ts">
-</script>
 
 <style scoped lang="scss">
 .navbar {
@@ -47,6 +44,10 @@
 
             @include breakpoint-down(sm) {
                 font-size: 22px;
+            }
+
+            @include breakpoint-down(xs) {
+                font-size: 16px;
             }
         }
 

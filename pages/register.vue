@@ -3,7 +3,7 @@
     <div class="content">
         <main class="wrapper">
             <span class="wrapper__heading">
-                Logowanie
+                Rejestracja
             </span>
             <div class="wrapper__input-wrapper">
                 <input class="wrapper__input-wrapper--input" type="text" placeholder="Adres E-mail">
@@ -16,11 +16,12 @@
                 <Icon v-else class="wrapper__input-wrapper--icon" name="basil:eye-closed-solid"
                     @click="switchPasswordVisibility" />
             </div>
-            <div class="wrapper__reminder">
-                <a class="wrapper__reminder--text" href="#">Nie pamietasz hasła?</a>
+            <div class="wrapper__input-wrapper">
+                <input class="wrapper__input-wrapper--input" :type="isPasswordVisible ? 'text' : 'password'"
+                    placeholder="Powtóz hasło">
             </div>
             <button class="wrapper__login-email">
-                ZALOGUJ SIĘ
+                ZAREJESTRUJ SIĘ
             </button>
             <span class="wrapper__divider-text">
                 lub
@@ -39,10 +40,10 @@
             </button>
             <div class="wrapper__register">
                 <span class="wrapper__register--text">
-                    Nie jesteś jeszcze członkiem?
+                    Masz już konto?
                 </span>
-                <a href="register" class="wrapper__register--link">
-                    Zajerestruj się
+                <a href="/login" class="wrapper__register--link">
+                    Zaloguj się
                 </a>
             </div>
         </main>
@@ -51,14 +52,11 @@
 </template>
 
 <script setup lang="ts">
-import { Ref } from "vue";
-
 const isPasswordVisible: Ref<boolean> = ref<boolean>(false);
 
 const switchPasswordVisibility = (): void => {
     isPasswordVisible.value = !isPasswordVisible.value;
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -102,6 +100,10 @@ $maxWrapperContentWidth: 375px;
             border-radius: 5px;
             border: 1px solid grey;
             margin-bottom: 10px;
+
+            &:nth-child(4) {
+                margin-bottom: 20px;
+            }
 
             &--input {
                 @include reset-input;
