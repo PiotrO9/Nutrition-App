@@ -31,6 +31,14 @@
                     Kontunuuj w Google
                 </span>
             </button>
+            <div class="wrapper__register">
+                <span class="wrapper__register--text">
+                    Nie jesteś jeszcze członkiem?
+                </span>
+                <a class="wrapper__register--link">
+                    Zajerestruj się
+                </a>
+            </div>
         </main>
     </div>
     <!-- <AppFooter /> -->
@@ -68,6 +76,12 @@ $maxWrapperContentWidth: 375px;
         border-radius: 20px;
         background-color: $pure-white;
         box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.12);
+
+        @include breakpoint-down(sm) {
+            width: 100%;
+            height: max-content;
+            box-shadow: unset;
+        }
 
         &__heading {
             @include font-style(32px, 700);
@@ -119,6 +133,7 @@ $maxWrapperContentWidth: 375px;
             border-radius: 5px;
             background-color: $deepSkyBlue;
             color: $pure-white;
+            cursor: pointer;
         }
 
         &__divider-text {
@@ -136,6 +151,7 @@ $maxWrapperContentWidth: 375px;
             border-radius: 5px;
             background-color: $pure-white;
             color: $pure-white;
+            cursor: pointer;
 
             &--icon {
                 @include square-size(20px);
@@ -149,6 +165,15 @@ $maxWrapperContentWidth: 375px;
                 display: flex;
                 color: $pure-black;
                 justify-self: center;
+            }
+        }
+
+        &__register {
+            @include font-style(15px, 400);
+            margin-top: 20px;
+
+            &--link {
+                color: $deepSkyBlue;
             }
         }
     }
