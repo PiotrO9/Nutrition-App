@@ -1,5 +1,7 @@
 import { defineStore } from "pinia";
 import { useAlertStore } from "./alert";
+import alertType from "~/enums/alertType";
+import getAlertClass from "~/utils/alert/getAlertClass";
 
 interface User {
   id: string;
@@ -20,7 +22,7 @@ export const useAuthStore = defineStore("auth", {
   },
 
   actions: {
-    setUser(user: User | null): void {
+    setUser(user: any): void {
       this.user = user;
     },
     async logIn(email: string, password: string): Promise<void> {
@@ -28,17 +30,17 @@ export const useAuthStore = defineStore("auth", {
       const router = useRouter();
       const alert = useAlertStore();
 
-      const { user, error } = await client.auth.signInWithPassword({
+      const { data, error } = await client.auth.signInWithPassword({
         email: email,
         password: password,
       });
 
       if (error) {
-        console.log(error.message);
-        alert.setAlertState(error.message);
-        throw error;
+        console.log(error);
+        const errorCode: number = error.status ?? 400;
+        alert.setAlertState(error.message, getAlertClass(errorCode));
       } else {
-        this.setUser(user);
+        this.setUser(data);
         router.push("/dashboard");
       }
     },
