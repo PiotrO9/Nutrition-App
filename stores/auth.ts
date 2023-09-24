@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import { useAlertStore } from "./alert";
-import alertType from "~/enums/alertType";
 import getAlertClass from "~/utils/alert/getAlertClass";
 import getAlertIcon from "../utils/alert/getAlertIcon";
 

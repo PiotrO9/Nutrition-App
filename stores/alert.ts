@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import alertType from "../enums/alertType";
 import getAlertTranslation from "~/utils/alert/getAlertTranslation";
-import getAlertIcon from "~/utils/alert/getAlertIcon";
 
 interface AlertState {
   isActive: boolean;

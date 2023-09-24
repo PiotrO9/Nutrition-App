@@ -6,11 +6,11 @@
                 Rejestracja
             </span>
             <div class="wrapper__input-wrapper">
-                <input class="wrapper__input-wrapper--input" type="text" placeholder="Adres E-mail">
+                <input class="wrapper__input-wrapper--input" type="text" placeholder="Adres E-mail" v-model="email">
             </div>
             <div class="wrapper__input-wrapper">
                 <input class="wrapper__input-wrapper--input" :type="isPasswordVisible ? 'text' : 'password'"
-                    placeholder="Hasło">
+                    placeholder="Hasło" v-model="password">
                 <Icon v-if="isPasswordVisible" class="wrapper__input-wrapper--icon" name="basil:eye-solid"
                     @click="switchPasswordVisibility" />
                 <Icon v-else class="wrapper__input-wrapper--icon" name="basil:eye-closed-solid"
@@ -18,9 +18,9 @@
             </div>
             <div class="wrapper__input-wrapper">
                 <input class="wrapper__input-wrapper--input" :type="isPasswordVisible ? 'text' : 'password'"
-                    placeholder="Powtóz hasło">
+                    placeholder="Powtóz hasło" v-model="repeatedPassword">
             </div>
-            <button class="wrapper__login-email">
+            <button class="wrapper__login-email" @click="register">
                 ZAREJESTRUJ SIĘ
             </button>
             <span class="wrapper__divider-text">
@@ -52,7 +52,35 @@
 </template>
 
 <script setup lang="ts">
+import { Ref, ref } from 'vue';
+import { useAlertStore } from '~/stores/alert';
+import getAlertClass from "~/utils/alert/getAlertClass";
+import getAlertIcon from "../utils/alert/getAlertIcon";
+import emailValidator from "../utils/regex/emailValidator";
+
+const email: Ref<string> = ref<string>('');
+const password: Ref<string> = ref<string>('');
+const repeatedPassword: Ref<string> = ref<string>('');
+
+const alertStore = useAlertStore();
+
 const isPasswordVisible: Ref<boolean> = ref<boolean>(false);
+
+const register = (): void => {
+    console.log(password.value);
+    console.log(email.value);
+    console.log(repeatedPassword.value);
+
+    if (!password.value || !email.value || !repeatedPassword.value) {
+        alertStore.setAlertState("Nie wprowadzono danych", getAlertClass(400), getAlertIcon(400));
+    }
+    else if (password.value !== repeatedPassword.value) {
+        alertStore.setAlertState("Wprowadzone Hasła nie są jednakowe", getAlertClass(400), getAlertIcon(400));
+    }
+    else if (!emailValidator(email.value)) {
+        alertStore.setAlertState("Podano nie porpawny adres e-mail", getAlertClass(400), getAlertIcon(400));
+    }
+}
 
 const switchPasswordVisibility = (): void => {
     isPasswordVisible.value = !isPasswordVisible.value;

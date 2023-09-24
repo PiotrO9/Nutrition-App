@@ -11,7 +11,7 @@
                     {{ alertMessage }}
                 </span>
             </div>
-            <div class="alert__content--link">
+            <div v-if="linkText" class="alert__content--link">
                 <button class="button" @click="disableAlert">
                     <a class="button__link" :href="link">
                         {{ linkText }}
@@ -75,9 +75,11 @@ onMounted(() => {
         width: 80%;
         max-width: 375px;
         flex-direction: column;
+        gap: 5px;
         background-color: white;
         text-align: center;
         padding: 10px;
+        padding-bottom: 20px;
         animation: slideDown 0.5s ease forwards;
         border-radius: 8px;
 
@@ -97,15 +99,16 @@ onMounted(() => {
         &--wrapper {
             display: flex;
             flex-direction: row;
+            gap: 20px;
 
             .icon {
                 @include square-size(50px);
-                margin-left: 10px;
             }
 
             .message {
+                @include flex-center;
                 @include font-style(24px, 700, $Raleway);
-                margin-bottom: 20px;
+                text-align: center;
 
                 @include breakpoint-down(xs) {
                     font-size: 18px;
@@ -125,7 +128,6 @@ onMounted(() => {
         &.error {
             background-color: #DB6057;
             color: white;
-
         }
 
         &--link {
