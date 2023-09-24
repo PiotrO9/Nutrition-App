@@ -36,7 +36,6 @@ export const useAuthStore = defineStore("auth", {
       });
 
       if (error) {
-        console.log(error);
         const errorCode: number = error.status ?? 400;
         alert.setAlertState(error.message, getAlertClass(errorCode));
       } else {

@@ -3,7 +3,7 @@ const getAlertTranslation = (message: string): string => {
 
   switch (message) {
     case "Invalid login credentials": {
-      result = "nieprawidłowe dane logowania";
+      result = "Nieprawidłowe dane logowania";
       break;
     }
     default: {

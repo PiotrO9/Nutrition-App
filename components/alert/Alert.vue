@@ -5,9 +5,12 @@
             <div class="alert__content--cancel-wrapper">
                 <Icon class="close-icon" name="iconoir:cancel" @click="closeAlert" />
             </div>
-            <span class="alert__content--message">
-                {{ alertMessage }}
-            </span>
+            <div class="alert__content--wrapper">
+                <Icon :name="alertIcon" class="icon" />
+                <span class="message">
+                    {{ alertMessage }}
+                </span>
+            </div>
         </div>
     </div>
 </template>
@@ -20,7 +23,8 @@ import alertType from "../../enums/alertType";
 const alertStore = useAlertStore();
 const alertMessage: Ref<string> = ref<string>('');
 const alertMessageType: Ref<alertType | null> = ref<alertType | null>(null);
-const isCollapsed: Ref<boolean> = ref(false);
+const isCollapsed: Ref<boolean> = ref<boolean>(false);
+const alertIcon: Ref<string> = ref<string>("");
 
 const closeAlert = (): void => {
     isCollapsed.value = true;
@@ -35,6 +39,7 @@ onMounted(() => {
         if (alertStore.$state.isActive) {
             alertMessage.value = alertStore.$state.message;
             alertMessageType.value = alertStore.$state.alertType;
+            alertIcon.value = alertStore.$state.alertIcon;
         }
     })
 })
@@ -53,6 +58,7 @@ onMounted(() => {
     &__content {
         @include flex-center;
         width: 80%;
+        max-width: 375px;
         flex-direction: column;
         background-color: white;
         text-align: center;
@@ -64,15 +70,27 @@ onMounted(() => {
             width: 100%;
             display: flex;
             justify-content: flex-end;
+            justify-self: start;
+            align-self: flex-start;
 
             .close-icon {
                 @include square-size(30px);
             }
         }
 
-        &--message {
-            @include font-style(28px, 700);
-            margin-bottom: 20px;
+        &--wrapper {
+            display: flex;
+            flex-direction: row;
+
+            .icon {
+                @include square-size(50px);
+                margin-left: 10px;
+            }
+
+            .message {
+                @include font-style(24px, 700, $Raleway);
+                margin-bottom: 20px;
+            }
         }
 
         &.collapsed {
@@ -87,6 +105,7 @@ onMounted(() => {
         &.error {
             background-color: #DB6057;
             color: white;
+
         }
     }
 
