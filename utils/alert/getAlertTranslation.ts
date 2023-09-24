@@ -6,6 +6,10 @@ const getAlertTranslation = (message: string): string => {
       result = "Nieprawidłowe dane logowania";
       break;
     }
+    case "Email not confirmed": {
+      result = "Email nie został potwierdzony";
+      break;
+    }
     default: {
       result = message;
       break;

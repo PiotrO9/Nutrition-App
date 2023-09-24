@@ -133,6 +133,7 @@ onMounted(() => {
         &--link {
             @include flex-center;
             width: 100%;
+            margin-top: 10px;
 
             .button {
                 @include flex-center;

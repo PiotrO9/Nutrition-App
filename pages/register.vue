@@ -57,20 +57,18 @@ import { useAlertStore } from '~/stores/alert';
 import getAlertClass from "~/utils/alert/getAlertClass";
 import getAlertIcon from "../utils/alert/getAlertIcon";
 import emailValidator from "../utils/regex/emailValidator";
+import { useAuthStore } from "~/stores/auth";
 
 const email: Ref<string> = ref<string>('');
 const password: Ref<string> = ref<string>('');
 const repeatedPassword: Ref<string> = ref<string>('');
 
 const alertStore = useAlertStore();
+const authStore = useAuthStore();
 
 const isPasswordVisible: Ref<boolean> = ref<boolean>(false);
 
 const register = (): void => {
-    console.log(password.value);
-    console.log(email.value);
-    console.log(repeatedPassword.value);
-
     if (!password.value || !email.value || !repeatedPassword.value) {
         alertStore.setAlertState("Nie wprowadzono danych", getAlertClass(400), getAlertIcon(400));
     }
@@ -79,6 +77,9 @@ const register = (): void => {
     }
     else if (!emailValidator(email.value)) {
         alertStore.setAlertState("Podano nie porpawny adres e-mail", getAlertClass(400), getAlertIcon(400));
+    }
+    else {
+        authStore.SignUp(email.value, password.value);
     }
 }
 
