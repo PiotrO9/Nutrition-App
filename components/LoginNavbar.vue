@@ -2,17 +2,17 @@
     <nav class="navbar">
         <div class="navbar__wrapper">
             <span class="navbar__wrapper--title">
-                <a href="/">
+                <NuxtLink to="/">
                     Nutrition App
-                </a>
+                </NuxtLink>
             </span>
             <menu class="navbar__wrapper--menu">
-                <a href="/login" class="login">
+                <NuxtLink to="/login" class="login">
                     Zaloguj się
-                </a>
-                <a href="/register" class="register">
+                </NuxtLink>
+                <NuxtLink to="/register" class="register">
                     Zarejestruj się
-                </a>
+                </NuxtLink>
             </menu>
         </div>
     </nav>

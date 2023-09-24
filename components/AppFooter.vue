@@ -6,12 +6,12 @@
             </span>
         </div>
         <div class="footer__wrapper">
-            <a href="#">
+            <NuxtLink to="#">
                 Polityka prywatności
-            </a>
-            <a href="#">
+            </NuxtLink>
+            <NuxtLink to="#">
                 Polityka Cookie
-            </a>
+            </NuxtLink>
         </div>
     </footer>
 </template>

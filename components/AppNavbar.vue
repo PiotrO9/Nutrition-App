@@ -5,13 +5,19 @@
         </span>
         <ul class="navbar__menu">
             <li class="navbar__menu--item">
-                <a href="#">Baza produktów</a>
+                <NuxtLink to="#">
+                    Baza produktów
+                </NuxtLink>
             </li>
             <li class="navbar__menu--item">
-                <a href="#">Premium</a>
+                <NuxtLink to="#">
+                    Premium
+                </NuxtLink>
             </li>
             <li class="navbar__menu--item">
-                <a href="/login">Zaloguj</a>
+                <NuxtLink to="/login">
+                    Zaloguj
+                </NuxtLink>
             </li>
         </ul>
         <div class="navbar__burger" :class="{ active: isMobileMenuOpen }" @click="toggleMobileMenuState">
@@ -24,13 +30,19 @@
         <aside class="mobile-menu">
             <ul class="mobile-menu__menu">
                 <li class="mobile-menu__menu--item">
-                    <a href="#">Baza produktów</a>
+                    <NuxtLink to="#">
+                        Baza produktów
+                    </NuxtLink>
                 </li>
                 <li class="mobile-menu__menu--item">
-                    <a href="#">Premium</a>
+                    <NuxtLink to="#">
+                        Premium
+                    </NuxtLink>
                 </li>
                 <li class="mobile-menu__menu--item">
-                    <a href="#">Zaloguj</a>
+                    <NuxtLink to="/login">
+                        Premium
+                    </NuxtLink>
                 </li>
             </ul>
         </aside>

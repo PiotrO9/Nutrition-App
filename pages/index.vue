@@ -21,7 +21,7 @@
                 </div>
                 <div class="section__image-part section-one">
                     <div class="bg-stain">
-                        <img src="../assets/images/owsianka.png">
+                        <NuxtImg src="./owsianka.png" />
                     </div>
                 </div>
             </section>
@@ -34,9 +34,9 @@
                                 Strawberry
                             </span>
                         </div>
-                        <img class="bg-stain__image" src="../assets/images/truskawa.png">
+                        <NuxtImg class="bg-stain__image" src="./truskawa.png" />
                         <div class="bg-stain__circle-chart">
-                            <img class="image" src="../assets/icons/circle-chart.svg" alt="">
+                            <NuxtImg class="image" src="../assets/icons/circle-chart.svg" />
                             <span>
                                 32
                             </span>

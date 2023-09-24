@@ -17,7 +17,9 @@
                     @click="switchPasswordVisibility" />
             </div>
             <div class="wrapper__reminder">
-                <a class="wrapper__reminder--text" href="#">Nie pamietasz hasła?</a>
+                <NuxtLink class="wrapper__reminder--text" to="#">
+                    Nie pamietasz hasła?
+                </NuxtLink>
             </div>
             <button class="wrapper__login-email" @click="login">
                 ZALOGUJ SIĘ
@@ -41,9 +43,9 @@
                 <span class="wrapper__register--text">
                     Nie jesteś jeszcze członkiem?
                 </span>
-                <a href="/register" class="wrapper__register--link">
+                <NuxtLink to="/register" class="wrapper__register--link">
                     Zajerestruj się
-                </a>
+                </NuxtLink>
             </div>
         </main>
     </div>

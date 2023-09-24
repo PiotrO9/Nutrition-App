@@ -13,9 +13,9 @@
             </div>
             <div v-if="linkText" class="alert__content--link">
                 <button class="button" @click="disableAlert">
-                    <a class="button__link" :href="link">
+                    <NuxtLink :to="link" class="button__link">
                         {{ linkText }}
-                    </a>
+                    </NuxtLink>
                 </button>
             </div>
         </div>

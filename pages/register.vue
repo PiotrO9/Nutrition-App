@@ -42,9 +42,9 @@
                 <span class="wrapper__register--text">
                     Masz już konto?
                 </span>
-                <a href="/login" class="wrapper__register--link">
+                <NuxtLink to="/login" class="wrapper__register--link">
                     Zaloguj się
-                </a>
+                </NuxtLink>
             </div>
         </main>
     </div>
