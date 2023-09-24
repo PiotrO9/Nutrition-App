@@ -1,13 +1,15 @@
 import { defineStore } from "pinia";
 import alertType from "../enums/alertType";
 import getAlertTranslation from "~/utils/alert/getAlertTranslation";
-import getAlertIocn from "~/utils/alert/getAlertIcon";
+import getAlertIcon from "~/utils/alert/getAlertIcon";
 
 interface AlertState {
   isActive: boolean;
   message: string;
   alertType: alertType | null;
   alertIcon: string;
+  link: string;
+  linkText: string;
 }
 
 export const useAlertStore = defineStore("alert", {
@@ -16,6 +18,8 @@ export const useAlertStore = defineStore("alert", {
     message: "",
     alertType: null,
     alertIcon: "",
+    link: "",
+    linkText: "",
   }),
   getters: {
     getIsActive(): boolean {
@@ -24,20 +28,27 @@ export const useAlertStore = defineStore("alert", {
     getMessage(): string {
       return this.message;
     },
-    getIcon(): string {
-      return this.alertIcon;
-    },
   },
   actions: {
     setAlertState(
       message: string,
       alertType: alertType,
-      alertIcon: string
+      alertIcon: string,
+      link?: string,
+      linkText?: string
     ): void {
       (this.isActive = true),
         (this.message = getAlertTranslation(message)),
         (this.alertType = alertType),
-        (this.alertIcon = getAlertIocn(alertIcon));
+        (this.alertIcon = alertIcon);
+
+      if (link) {
+        this.link = link;
+      }
+
+      if (linkText) {
+        this.linkText = linkText;
+      }
     },
     disableAlert(): void {
       (this.isActive = false), (this.message = "");

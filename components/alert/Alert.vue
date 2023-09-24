@@ -11,6 +11,13 @@
                     {{ alertMessage }}
                 </span>
             </div>
+            <div class="alert__content--link">
+                <button class="button" @click="disableAlert">
+                    <a class="button__link" :href="link">
+                        {{ linkText }}
+                    </a>
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -25,12 +32,18 @@ const alertMessage: Ref<string> = ref<string>('');
 const alertMessageType: Ref<alertType | null> = ref<alertType | null>(null);
 const isCollapsed: Ref<boolean> = ref<boolean>(false);
 const alertIcon: Ref<string> = ref<string>("");
+const link: Ref<string> = ref<string>("");
+const linkText: Ref<string> = ref<string>("");
+
+const disableAlert = (): void => {
+    alertStore.disableAlert();
+}
 
 const closeAlert = (): void => {
     isCollapsed.value = true;
 
     setTimeout(() => {
-        alertStore.disableAlert();
+        disableAlert();
     }, 500);
 }
 
@@ -40,6 +53,8 @@ onMounted(() => {
             alertMessage.value = alertStore.$state.message;
             alertMessageType.value = alertStore.$state.alertType;
             alertIcon.value = alertStore.$state.alertIcon;
+            link.value = alertStore.$state.link;
+            linkText.value = alertStore.$state.linkText;
         }
     })
 })
@@ -75,6 +90,7 @@ onMounted(() => {
 
             .close-icon {
                 @include square-size(30px);
+                cursor: pointer;
             }
         }
 
@@ -90,6 +106,10 @@ onMounted(() => {
             .message {
                 @include font-style(24px, 700, $Raleway);
                 margin-bottom: 20px;
+
+                @include breakpoint-down(xs) {
+                    font-size: 18px;
+                }
             }
         }
 
@@ -106,6 +126,24 @@ onMounted(() => {
             background-color: #DB6057;
             color: white;
 
+        }
+
+        &--link {
+            @include flex-center;
+            width: 100%;
+
+            .button {
+                @include flex-center;
+                outline: none;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 8px;
+                cursor: pointer;
+
+                &__link {
+                    @include font-style(14px, 700, $Raleway);
+                }
+            }
         }
     }
 

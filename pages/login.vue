@@ -41,7 +41,7 @@
                 <span class="wrapper__register--text">
                     Nie jesteś jeszcze członkiem?
                 </span>
-                <a href="register" class="wrapper__register--link">
+                <a href="/register" class="wrapper__register--link">
                     Zajerestruj się
                 </a>
             </div>
@@ -68,15 +68,6 @@ const switchPasswordVisibility = (): void => {
 const login = () => {
     store.logIn(email.value, password.value);
 }
-
-onMounted(() => {
-    watchEffect(() => {
-        if (!user.value) {
-            console.log("Wylogowano")
-            navigateTo('/')
-        }
-    })
-})
 </script>
 
 <style scoped lang="scss">

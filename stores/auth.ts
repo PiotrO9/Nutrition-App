@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { useAlertStore } from "./alert";
 import alertType from "~/enums/alertType";
 import getAlertClass from "~/utils/alert/getAlertClass";
+import getAlertIcon from "../utils/alert/getAlertIcon";
 
 interface User {
   id: string;
@@ -37,7 +38,13 @@ export const useAuthStore = defineStore("auth", {
 
       if (error) {
         const errorCode: number = error.status ?? 400;
-        alert.setAlertState(error.message, getAlertClass(errorCode));
+        alert.setAlertState(
+          error.message,
+          getAlertClass(errorCode),
+          getAlertIcon(errorCode),
+          "/",
+          "Go home"
+        );
       } else {
         this.setUser(data);
         router.push("/dashboard");

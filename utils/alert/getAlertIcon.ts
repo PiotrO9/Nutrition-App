@@ -1,5 +1,5 @@
 const getAlertIcon = (code: number): string => {
-  let result: codeError;
+  let result: string;
 
   switch (code) {
     case 200: {
