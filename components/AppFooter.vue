@@ -19,10 +19,10 @@
 <style lang="scss" scoped>
 .footer {
     @include flex-center;
-    justify-content: space-between;
-    padding: 10px 20px;
     width: 100vw;
     height: 60px;
+    justify-content: space-between;
+    padding: 10px 20px;
     background-color: $paleGray;
 
     @include breakpoint-down(md) {

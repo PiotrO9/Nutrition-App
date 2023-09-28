@@ -65,7 +65,6 @@ const toggleMobileMenuState = (): void => {
     width: 100%;
     height: 60px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     padding: 10px 15px;
     position: relative;
@@ -86,7 +85,6 @@ const toggleMobileMenuState = (): void => {
 
     &__menu {
         display: flex;
-        flex-direction: row;
         gap: 40px;
 
         @include breakpoint-down(md) {

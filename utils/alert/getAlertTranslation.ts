@@ -1,22 +1,15 @@
 const getAlertTranslation = (message: string): string => {
-  let result = "";
-
   switch (message) {
     case "Invalid login credentials": {
-      result = "Nieprawidłowe dane logowania";
-      break;
+      return "Nieprawidłowe dane logowania";
     }
     case "Email not confirmed": {
-      result = "Email nie został potwierdzony";
-      break;
+      return "Email nie został potwierdzony";
     }
     default: {
-      result = message;
-      break;
+      return message;
     }
   }
-
-  return result;
 };
 
 export default getAlertTranslation;

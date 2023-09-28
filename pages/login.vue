@@ -56,7 +56,6 @@
 import { Ref } from "vue";
 import { useAuthStore } from "~/stores/auth";
 
-const user = useSupabaseUser()
 const store = useAuthStore();
 
 const email: Ref<string> = ref<string>('');
@@ -67,9 +66,7 @@ const switchPasswordVisibility = (): void => {
     isPasswordVisible.value = !isPasswordVisible.value;
 }
 
-const login = () => {
-    store.logIn(email.value, password.value);
-}
+const login = () => store.logIn(email.value, password.value);
 </script>
 
 <style scoped lang="scss">

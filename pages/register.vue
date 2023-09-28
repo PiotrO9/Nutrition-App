@@ -92,8 +92,7 @@ const switchPasswordVisibility = (): void => {
 $maxWrapperContentWidth: 375px;
 
 .content {
-    height: 100%;
-    width: 100%;
+    @include square-size(100%);
     display: flex;
     justify-content: center;
     margin-top: 50px;

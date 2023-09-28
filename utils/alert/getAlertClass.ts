@@ -1,20 +1,12 @@
 import codeError from "../../enums/alertType";
 
 const getAlertClass = (code: number): codeError => {
-  let result: codeError;
-
   switch (code) {
-    case 200: {
-      result = codeError.OK;
-      break;
-    }
-    default: {
-      result = codeError.ERROR;
-      break;
-    }
+    case 200:
+      return codeError.OK;
+    default:
+      return codeError.ERROR;
   }
-
-  return result;
 };
 
 export default getAlertClass;

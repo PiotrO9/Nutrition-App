@@ -35,9 +35,7 @@ const alertIcon: Ref<string> = ref<string>("");
 const link: Ref<string> = ref<string>("");
 const linkText: Ref<string> = ref<string>("");
 
-const disableAlert = (): void => {
-    alertStore.disableAlert();
-}
+const disableAlert = (): void => alertStore.disableAlert();
 
 const closeAlert = (): void => {
     isCollapsed.value = true;
@@ -98,7 +96,6 @@ onMounted(() => {
 
         &--wrapper {
             display: flex;
-            flex-direction: row;
             gap: 20px;
 
             .icon {

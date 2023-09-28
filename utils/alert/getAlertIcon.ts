@@ -1,18 +1,10 @@
 const getAlertIcon = (code: number): string => {
-  let result: string;
-
   switch (code) {
-    case 200: {
-      result = "icon-park-solid:success";
-      break;
-    }
-    default: {
-      result = "ooui:error";
-      break;
-    }
+    case 200:
+      return "icon-park-solid:success";
+    default:
+      return "ooui:error";
   }
-
-  return result;
 };
 
 export default getAlertIcon;

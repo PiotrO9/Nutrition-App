@@ -36,7 +36,7 @@
                         </div>
                         <NuxtImg class="bg-stain__image" src="./truskawa.png" />
                         <div class="bg-stain__circle-chart">
-                            <NuxtImg class="image" src="../assets/icons/circle-chart.svg" />
+                            <NuxtImg class="image" src="./circle-chart.svg" />
                             <span>
                                 32
                             </span>
@@ -107,12 +107,6 @@
     <AppFooter />
 </template>
 
-<script setup>
-import AppNavbar from '~/components/AppNavbar.vue';
-import AppFooter from '~/components/AppFooter.vue';
-
-</script>
-
 <style lang="scss" scoped>
 .content {
     display: flex;
@@ -127,7 +121,6 @@ import AppFooter from '~/components/AppFooter.vue';
         .section {
             display: flex;
             justify-content: center;
-            flex-direction: row;
             width: 100%;
             margin-top: 60px;
             margin-bottom: 100px;
@@ -370,7 +363,6 @@ import AppFooter from '~/components/AppFooter.vue';
 
                 &--articles {
                     display: flex;
-                    flex-direction: row;
                     margin-top: 60px;
                     gap: 50px;
 
