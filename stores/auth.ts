@@ -1,27 +1,27 @@
 import { defineStore } from "pinia";
 import { useAlertStore } from "./alert";
+import { useLocalStorageStore } from "./localStorage";
 import getAlertClass from "~/utils/alert/getAlertClass";
 import getAlertIcon from "../utils/alert/getAlertIcon";
 
-interface User {
-  id: string;
-  email: string;
-}
-
-interface AuthState {
-  user: User | null;
-}
-
 export const useAuthStore = defineStore("auth", {
-  state: (): AuthState => ({
+  state: () => ({
     user: null,
   }),
   getters: {
     isAuthenticated: (state) => !!state.user,
   },
   actions: {
-    setUser(user: any): void {
-      this.user = user;
+    setUser(data: any | null): void {
+      const localStorageStore = useLocalStorageStore();
+
+      if (data) {
+        const user = data.user;
+        this.user = user;
+        localStorageStore.setItem("user", user);
+      } else {
+        localStorageStore.clearItem("user");
+      }
     },
     async logIn(email: string, password: string): Promise<void> {
       const client = useSupabaseClient();
@@ -72,8 +72,14 @@ export const useAuthStore = defineStore("auth", {
         );
       }
     },
+    SignOut(): void {
+      const client = useSupabaseClient();
+      client.auth.signOut();
+    },
     clearUser(): void {
       this.setUser(null);
+      const localStorageStore = useLocalStorageStore();
+      localStorageStore.clearItem("user");
     },
   },
 });
