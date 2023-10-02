@@ -1,10 +1,11 @@
 <template>
-    <h1>dashboard</h1>
-    <h2>{{ user?.email }}</h2>
+    <DashboardNav />
+    <div class="wrapper">
+        <main class="main">
 
-    <button @click="logout">
-        log out
-    </button>
+        </main>
+    </div>
+    <DashboardFooter />
 </template>
 
 <script setup lang="ts">
