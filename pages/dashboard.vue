@@ -2,7 +2,7 @@
     <DashboardNav />
     <div class="wrapper">
         <main class="main">
-
+            <h1>test</h1>
         </main>
     </div>
     <DashboardFooter />
@@ -28,4 +28,8 @@ console.log(user);
 
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.main {
+    height: 100%;
+}
+</style>
