@@ -2,7 +2,7 @@
     <DashboardNav />
     <div class="wrapper">
         <main class="main">
-            <h1>test</h1>
+            <Meals />
         </main>
     </div>
     <DashboardFooter />
@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '~/stores/auth';
+import Meals from '~/components/dashboard/Meals/Meals.vue';
 
 const authStorage = useAuthStore();
 const user = useSupabaseUser();
@@ -24,12 +25,17 @@ watchEffect(() => {
     }
 })
 
-console.log(user);
-
 </script>
 
 <style scoped lang="scss">
+.wrapper {
+    @include flex-center;
+}
+
 .main {
+    @include flex-center;
     height: 100%;
+    width: 100%;
+    max-width: 1024px;
 }
 </style>
