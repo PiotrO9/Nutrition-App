@@ -20,11 +20,13 @@ const props = defineProps<navItemProps>();
 <style scoped lang="scss">
 .nav-item {
     @include flex-center;
+    @include unselectable;
     flex-direction: column;
     max-width: 100px;
     width: 100%;
     padding-top: 10px;
     color: $mediumGray;
+    cursor: pointer;
 
     &:first-child,
     &:last-child {
@@ -44,7 +46,7 @@ const props = defineProps<navItemProps>();
     }
 
     &__week-day {
-        @include font-style(20px, 300);
+        @include font-style(18px, 300);
     }
 }
 </style>

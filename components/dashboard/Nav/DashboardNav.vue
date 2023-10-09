@@ -2,17 +2,18 @@
     <nav class="nav">
         <menu class="nav__menu">
             <ul class="nav__menu--list">
-                <DashboardNavItem dateDay="test" weekDate="test" :isSelected="test2" />
-                <DashboardNavItem dateDay="test" weekDate="test" :isSelected="test2" />
-                <DashboardNavItem dateDay="test" weekDate="test" :isSelected="test" />
-                <DashboardNavItem dateDay="test" weekDate="test" :isSelected="test2" />
-                <DashboardNavItem dateDay="test" weekDate="test" :isSelected="test2" />
+                <DashboardNavItem v-for="(date, index) in dateObjectsArray" :key="index" :dateDay="date.dayName"
+                    :weekDate="date.weekDate" :isSelected="test" />
             </ul>
         </menu>
     </nav>
 </template>
 
 <script setup lang="ts">
+import getDateObjectsArray from "../../../utils/date/getDateObjectsArray";
+import DateObject from "~/types/DateObject";
+
+const dateObjectsArray: DateObject[] = getDateObjectsArray()
 const test = true;
 const test2 = false;
 
