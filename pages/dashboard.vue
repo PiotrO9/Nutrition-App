@@ -3,6 +3,7 @@
     <div class="wrapper">
         <main class="main">
             <Meals />
+            <Water />
         </main>
     </div>
     <DashboardFooter />
@@ -11,6 +12,7 @@
 <script setup lang="ts">
 import { useAuthStore } from '~/stores/auth';
 import Meals from '~/components/dashboard/Meals/Meals.vue';
+import Water from '~/components/dashboard/Water/Water.vue';
 
 const authStorage = useAuthStore();
 const user = useSupabaseUser();
@@ -30,12 +32,15 @@ watchEffect(() => {
 <style scoped lang="scss">
 .wrapper {
     @include flex-center;
+    height: calc(100% - 120px);
 }
 
 .main {
-    @include flex-center;
-    height: 100%;
-    width: 100%;
+    @include square-size(100%);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     max-width: 1024px;
 }
 </style>
