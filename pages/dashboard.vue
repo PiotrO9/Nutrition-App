@@ -4,6 +4,7 @@
         <main class="main">
             <Meals />
             <Water />
+            <MacrosFooter />
         </main>
     </div>
     <DashboardFooter />
@@ -13,6 +14,7 @@
 import { useAuthStore } from '~/stores/auth';
 import Meals from '~/components/dashboard/Meals/Meals.vue';
 import Water from '~/components/dashboard/Water/Water.vue';
+import MacrosFooter from '~/components/dashboard/Footer/MacrosFooter.vue';
 
 const authStorage = useAuthStore();
 const user = useSupabaseUser();
