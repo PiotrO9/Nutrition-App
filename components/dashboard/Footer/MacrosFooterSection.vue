@@ -1,6 +1,6 @@
 <template>
     <section class="macros-section">
-        <MacrosFooterSectionBar />
+        <MacrosFooterSectionBar :limit="100" :value="101"/>
         <span class="macros-section__total">
             {{ sectionData }} <b> {{ dataValue }} </b>
         </span>
@@ -11,6 +11,8 @@
 </template>
 
 <script setup lang="ts">
+import MacrosFooterSectionBar from "./MacrosFooterSectionBar.vue";
+
 const sectionData = "Kalorie";
 const dataValue = 1234;
 const range = [123, 124];
