@@ -24,7 +24,7 @@ let percentageValue = ref("0%");
 
 onMounted(() => {
     const percentage = ref((value / limit) * 100);
-    if(percentage.value > 100) {
+    if (percentage.value > 100) {
         percentage.value = 100;
         isOverLimit.value = true;
     }
@@ -44,7 +44,7 @@ $border-radius-value: 10px;
 .macros-progress-bar {
     position: relative;
     widows: 50px;
-    height: 10px;
+    height: 6px;
 
     &__background {
         width: 100%;
@@ -64,7 +64,7 @@ $border-radius-value: 10px;
         top: 0;
         left: 0;
         border-radius: $border-radius-value;
-        
+
         &.overLimit {
             background-color: red;
         }

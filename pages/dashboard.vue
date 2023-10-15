@@ -4,9 +4,9 @@
         <main class="main">
             <Meals />
             <Water />
-            <MacrosFooter />
         </main>
     </div>
+    <MacrosFooter />
     <DashboardFooter />
 </template>
 
@@ -34,15 +34,21 @@ watchEffect(() => {
 <style scoped lang="scss">
 .wrapper {
     @include flex-center;
-    height: calc(100% - 120px);
+    height: calc(100% - 194px);
+
+    @media (min-width: 370px) {
+        height: calc(100% - 179px);
+    }
 }
 
 .main {
     @include square-size(100%);
+    @include invisible-scroll;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     max-width: 1024px;
+    overflow-y: scroll;
 }
 </style>

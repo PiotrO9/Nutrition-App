@@ -64,6 +64,20 @@
   -ms-user-select: none;
 }
 
+@mixin invisible-scroll {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+}
+
 @mixin breakpoint-up($breakpoint) {
     @if map-has-key($breakpoints-up, $breakpoint) {
       @media (min-width: map-get($breakpoints-up, $breakpoint)) {

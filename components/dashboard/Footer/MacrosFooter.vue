@@ -16,8 +16,10 @@ import MacrosFooterSection from './MacrosFooterSection.vue';
 
 <style scoped lang="scss">
 .macros {
-    height: max-content;
     width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
     background-color: #F7F8F8;
 
     &__wrapper {
@@ -26,7 +28,9 @@ import MacrosFooterSection from './MacrosFooterSection.vue';
         width: 100%;
         max-width: 1024px;
         gap: 10px;
-        padding: 0px 10px;
+        // padding: 0px 10px;
+
+        @include breakpoint-up(md) {}
     }
 }
 </style>
