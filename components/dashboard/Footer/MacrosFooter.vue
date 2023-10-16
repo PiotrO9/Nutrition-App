@@ -1,4 +1,5 @@
 <template>
+    // TODO - Responsywność
     <div class="macros">
         <div class="macros__wrapper">
             <MacrosFooterSection />
