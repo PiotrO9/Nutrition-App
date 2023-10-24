@@ -37,25 +37,45 @@ const addGlass = (): void => {
     width: 100%;
     gap: 50px;
 
+    @include breakpoint-up(xl) {
+        gap: 35px;
+    }
+
     .wrapper {
         width: 100%;
         max-width: 250px;
         display: flex;
         flex-direction: column;
         gap: 5px;
+
+        @include breakpoint-up(xl) {
+            max-width: 588px;
+        }
     }
 
     &__title {
         @include font-style(20px, 700, $Inter);
+
+        @include breakpoint-up(xl) {
+            @include font-style(48px, 700, $Inter);
+        }
     }
 
     &__stats {
         color: $mediumGray;
+
+        @include breakpoint-up(xl) {
+            @include font-style(24px, 300, $Inter);
+        }
     }
 
     &__glasses {
         .glass {
             @include square-size(40px);
+
+            @include breakpoint-up(xl) {
+                @include square-size(50px);
+            }
         }
     }
 
@@ -66,9 +86,18 @@ const addGlass = (): void => {
         border-radius: 50px;
         cursor: pointer;
 
+        @include breakpoint-up(xl) {
+            @include square-size(56px);
+            margin-left: 25px;
+        }
+
         .plus {
             @include square-size(30px);
             color: $pure-white;
+
+            @include breakpoint-up(xl) {
+                @include square-size(40px);
+            }
         }
     }
 }

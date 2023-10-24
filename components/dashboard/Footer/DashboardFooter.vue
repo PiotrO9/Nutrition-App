@@ -42,6 +42,10 @@ const footerContent: FooterItemProps[] = [
     justify-content: center;
     background-color: $pure-black;
 
+    @include breakpoint-up(xl) {
+        height: 90px;
+    }
+
     &__wrapper {
         max-width: 1024px;
         width: 100%;

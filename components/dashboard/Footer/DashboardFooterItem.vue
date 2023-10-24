@@ -20,6 +20,10 @@ const { iconName, text, selected } = defineProps(["iconName", "text", "selected"
     color: $pure-white;
     gap: 5px;
 
+    @include breakpoint-up(xl) {
+        height: 90px;
+    }
+
     &.selected {
         color: $ceruleanBlue;
 
@@ -28,6 +32,10 @@ const { iconName, text, selected } = defineProps(["iconName", "text", "selected"
 
     &__icon {
         @include square-size(24px);
+
+        @include breakpoint-up(xl) {
+            @include square-size(44px);
+        }
     }
 }
 </style>

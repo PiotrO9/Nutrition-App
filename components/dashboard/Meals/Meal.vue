@@ -48,16 +48,32 @@
             flex-direction: column;
             gap: 10px;
 
+            @include breakpoint-up(xl) {
+                gap: 20px;
+            }
+
             .meal-title {
                 @include font-style(20px, 700, $Inter);
+
+                @include breakpoint-up(xl) {
+                    @include font-style(48px, 700);
+                }
             }
 
             .meal-macros-summary {
                 display: grid;
                 grid-template-columns: 2fr repeat(3, 1fr);
 
+                @include breakpoint-up(xl) {
+                    column-gap: 70px;
+                }
+
                 .summary-label {
                     color: $mediumGray;
+
+                    @include breakpoint-up(xl) {
+                        @include font-style(24px, 300, $Inter);
+                    }
                 }
             }
         }
@@ -70,7 +86,11 @@
                     @include square-size(33px);
                     color: $seagreen;
                     cursor: pointer;
-                    transform: rotate(90deg)
+                    transform: rotate(90deg);
+
+                    @include breakpoint-up(xl) {
+                        @include square-size(53px);
+                    }
                 }
             }
 
@@ -80,9 +100,17 @@
                 background-color: $seagreen;
                 border-radius: 50px;
 
+                @include breakpoint-up(xl) {
+                    @include square-size(56px);
+                }
+
                 .plus {
                     @include square-size(30px);
                     color: $pure-white;
+
+                    @include breakpoint-up(xl) {
+                        @include square-size(40px);
+                    }
                 }
             }
         }

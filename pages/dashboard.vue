@@ -39,6 +39,10 @@ watchEffect(() => {
     @media (min-width: 370px) {
         height: calc(100% - 179px);
     }
+
+    @include breakpoint-up(xl) {
+        height: calc(100% - 268px);
+    }
 }
 
 .main {

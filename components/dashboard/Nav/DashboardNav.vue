@@ -27,6 +27,10 @@ const test2 = false;
     justify-content: center;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
+    @include breakpoint-up(xl) {
+        height: 70px;
+    }
+
     &__menu {
         width: 100%;
         max-width: 1024px;

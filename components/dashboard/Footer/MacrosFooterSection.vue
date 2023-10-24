@@ -28,9 +28,17 @@ const rangeUnit = "g";
     padding: 7px;
     @include font-style(12px, 300, $Inter);
 
+    @include breakpoint-up(xl) {
+        padding: 12px;
+    }
+
     &__total {
         @include breakpoint-up(sm) {
             font-size: 14px;
+        }
+
+        @include breakpoint-up(xl) {
+            @include font-style(28px, 300, $Inter);
         }
 
         b {
@@ -43,6 +51,10 @@ const rangeUnit = "g";
 
         @include breakpoint-up(sm) {
             font-size: 14px;
+        }
+
+        @include breakpoint-up(xl) {
+            @include font-style(28px, 300, $Inter);
         }
     }
 }

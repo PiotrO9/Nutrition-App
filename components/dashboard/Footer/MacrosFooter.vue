@@ -1,5 +1,4 @@
 <template>
-    // TODO - Responsywność
     <div class="macros">
         <div class="macros__wrapper">
             <MacrosFooterSection />
@@ -29,9 +28,12 @@ import MacrosFooterSection from './MacrosFooterSection.vue';
         width: 100%;
         max-width: 1024px;
         gap: 10px;
-        // padding: 0px 10px;
 
         @include breakpoint-up(md) {}
+
+        @include breakpoint-up(xl) {
+            gap: 20px;
+        }
     }
 }
 </style>

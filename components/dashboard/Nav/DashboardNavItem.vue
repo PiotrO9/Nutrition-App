@@ -28,6 +28,11 @@ const props = defineProps<navItemProps>();
     color: $mediumGray;
     cursor: pointer;
 
+    @include breakpoint-up(xl) {
+        max-width: 220px;
+        padding: 10px;
+    }
+
     &:first-child,
     &:last-child {
         display: none;
@@ -43,10 +48,18 @@ const props = defineProps<navItemProps>();
 
     &__date-day {
         @include font-style(16px, 700);
+
+        @include breakpoint-up(xl) {
+            @include font-style(18px, 700);
+        }
     }
 
     &__week-day {
         @include font-style(18px, 300);
+
+        @include breakpoint-up(xl) {
+            @include font-style(24px, 700);
+        }
     }
 }
 </style>
