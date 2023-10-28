@@ -2,11 +2,7 @@
     <div class="meals">
         <div class="meals__wrapper">
             <ul class="meals-list">
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
-                <Meal />
+                <Meal v-for="meal in mealsList" :key="meal" :mealName="meal" />
             </ul>
         </div>
     </div>
@@ -15,7 +11,7 @@
 <script setup lang="ts">
 import Meal from "./Meal.vue";
 
-const mealsList = ["test"];
+const mealsList = ["Śniadanie", "II Śniadanie", "Obiad", "Podwieczorek", "Kolacja"];
 
 </script>
 

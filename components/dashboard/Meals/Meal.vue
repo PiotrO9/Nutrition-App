@@ -3,7 +3,7 @@
         <div class="meal__total">
             <div class="meal__total--datas-wrapper">
                 <span class="meal-title">
-                    Śniadanie
+                    {{ mealName }}
                 </span>
                 <div class="meal-macros-summary">
                     <span class="kcal-summary summary-label">123 kcal</span>
@@ -16,7 +16,7 @@
                 <div class="option-wrapper">
                     <Icon class="dots" name="tabler:dots" />
                 </div>
-                <div class="add-meal-wrapper">
+                <div class="add-meal-wrapper" @click="addFood">
                     <Icon class="plus" name="ic:baseline-plus" />
                 </div>
             </div>
@@ -25,6 +25,11 @@
 </template>
 
 <script setup lang="ts">
+const { mealName } = defineProps(["mealName"]);
+
+const addFood = (): void => {
+    navigateTo("/add-food")
+}
 </script>
 
 <style scoped lang="scss">
@@ -99,6 +104,7 @@
                 @include flex-center;
                 background-color: $seagreen;
                 border-radius: 50px;
+                cursor: pointer;
 
                 @include breakpoint-up(xl) {
                     @include square-size(56px);
