@@ -22,7 +22,7 @@
 
     &__wrapper {
         width: 100%;
-        max-width: 500px;
+        max-width: 620px;
         display: flex;
         padding: 10px;
         gap: 10px;

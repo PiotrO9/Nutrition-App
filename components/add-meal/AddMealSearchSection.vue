@@ -20,7 +20,7 @@ const results: string[] = ["test", "test", "test", "test", "test", "test", "test
     &__results {
         height: 100%;
         width: 95%;
-        max-width: 480px;
+        max-width: 600px;
         display: flex;
         flex-direction: column;
         gap: 10px;

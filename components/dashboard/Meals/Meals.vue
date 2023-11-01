@@ -10,8 +10,9 @@
 
 <script setup lang="ts">
 import Meal from "./Meal.vue";
+import getMealsNames from "../../../utils/getters/getMealsNames";
 
-const mealsList = ["Śniadanie", "II Śniadanie", "Obiad", "Podwieczorek", "Kolacja"];
+const mealsList = getMealsNames();
 
 </script>
 

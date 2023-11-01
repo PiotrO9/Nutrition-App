@@ -28,7 +28,7 @@
 const { mealName } = defineProps(["mealName"]);
 
 const addFood = (): void => {
-    navigateTo("/add-food")
+    navigateTo("/add-meal")
 }
 </script>
 

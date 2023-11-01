@@ -1,5 +1,5 @@
 <template>
-    <li class="result-item">
+    <li class="result-item" @click="itemResultClick">
         <span class="result-item__title">
             Jaja kurze
         </span>
@@ -15,7 +15,9 @@
 </template>
 
 <script setup lang="ts">
-
+const itemResultClick = (): void => {
+    navigateTo("/add-food");
+}
 </script>
 
 <style scoped lang="scss">

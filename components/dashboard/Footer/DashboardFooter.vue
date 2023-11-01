@@ -41,6 +41,9 @@ const footerContent: FooterItemProps[] = [
     display: flex;
     justify-content: center;
     background-color: $pure-black;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 
     @include breakpoint-up(xl) {
         height: 90px;
