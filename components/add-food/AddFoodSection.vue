@@ -9,6 +9,7 @@
         <AddFoodSectionPortion />
         <AddFoodSectionPortion />
         <AddFoodSectionPortion />
+        <AddFoodSectionCustomPortion />
     </div>
 </template>
 
