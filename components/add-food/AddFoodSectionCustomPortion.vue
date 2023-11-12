@@ -19,6 +19,14 @@
 </template>
 
 <script setup lang="ts">
+import { useActionsStore } from '../../stores/actions';
+
+const actionStore = useActionsStore();
+const supabase = useSupabaseClient()
+
+onMounted(() => {
+    actionStore.addItems()
+})
 
 </script>
 

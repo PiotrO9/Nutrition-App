@@ -29,7 +29,7 @@ onMounted(() => {
         isOverLimit.value = true;
     }
     percentageValue.value = (percentage.value + "%");
-    console.log(percentageValue.value)
+    // console.log(percentageValue.value)
 })
 
 const customStyles = computed(() => ({

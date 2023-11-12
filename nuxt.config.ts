@@ -51,8 +51,8 @@ export default defineNuxtConfig({
     },
   },
   supabase: {
-    url: process.env.SUPABASE_URL,
-    key: process.env.SUPABASE_KEY,
+    url: process.env.NUXT_ENV_SUPABASE_URL,
+    key: process.env.NUXT_ENV_SUPABASE_KEY,
     redirect: false,
   },
 });

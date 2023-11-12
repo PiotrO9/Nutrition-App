@@ -28,7 +28,6 @@ watchEffect(() => {
         navigateTo("/");
     }
 })
-
 </script>
 
 <style scoped lang="scss">
