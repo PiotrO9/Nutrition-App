@@ -24,10 +24,6 @@ import { useActionsStore } from '../../stores/actions';
 const actionStore = useActionsStore();
 const supabase = useSupabaseClient()
 
-onMounted(() => {
-    actionStore.addProduct()
-})
-
 </script>
 
 <style scoped lang="scss">

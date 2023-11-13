@@ -1,4 +1,6 @@
 import { defineStore } from "pinia";
+import { v4 as uuidv4 } from "uuid";
+import { useMealStore } from "./meal";
 
 interface YourDataType {
   id: number;
@@ -32,21 +34,63 @@ export const useActionsStore = defineStore("actions", {
 
       return data.value ? true : false;
     },
-    async addProduct(): Promise<void> {
+    async addProduct(productId: string, quanity: number): Promise<void> {
       const supabase = useSupabaseClient();
+      const mealStore = useMealStore();
+      let mealId: uuidv4 = 0;
+
+      const userId = await supabase.auth.getUser().then((res) => {
+        return res.data.user?.id as never;
+      });
 
       if (await !this.checkIfMealExist()) {
-        const userId = await supabase.auth.getUser().then((res) => {
-          return res.data.user?.id as never;
+        const mealId = uuidv4();
+        const mealType = mealStore.getmealType;
+        mealStore.setMealDate();
+        const mealDate = mealStore.getMealDate;
+
+        const mealObject: never = {
+          meal_id: mealId,
+          meal_type: mealType,
+          date: mealDate,
+        } as never;
+
+        const { data, error } = await useAsyncData("meal", async () => {
+          const { data } = await supabase.from("Meal").insert(mealObject);
         });
+
+        if (error.value) {
+          console.log(error.value);
+        }
+
+        console.log(data.value);
+      } else {
+        const { data, error } = await useAsyncData("meal", async () => {
+          mealStore.setMealDate();
+          const { data } = await supabase
+            .from("Meal")
+            .select("*")
+            .eq("user_id", userId)
+            .eq("date", mealStore.getMealDate);
+        });
+
+        if (error.value) {
+          console.log(error.value);
+        }
+
+        if (data.value) {
+          mealId = data.value[0].meal_id as uuidv4;
+        }
       }
 
-      const test: never = { nazwa: "testowa nazwa" };
+      const { data } = await useAsyncData("meal", async () => {
+        const FoodObject = {
+          meal_id: mealId,
+          product_id: productId,
+          quanity: quanity,
+        } as never;
 
-      const { data, error } = await useAsyncData("restaurant", async () => {
-        const { data } = await supabase.from("testy").insert(test);
-
-        return data;
+        const { data } = await supabase.from("Food").insert(FoodObject);
       });
 
       console.log(data.value);

@@ -4,10 +4,10 @@
             1x Łyżeczka
         </span>
         <span class="add-food-section__portion--amount row">
-            5g
+            {{ quanity }}{{ unit }}
         </span>
         <div class="add-food-section__portion--kcal row">
-            37 kcal
+            {{ kcal }} kcal
         </div>
         <div class="add-food-section__portion--action row">
             <div class="wrapper" @click="addItem">
@@ -20,19 +20,18 @@
 <script setup lang="ts">
 import { useActionsStore } from "~/stores/actions";
 
+const quanity = 5;
+const unit = "g"
+const kcal = 37;
+
+const productId = "ffd77010-0aff-428c-bff0-751c9390f625";
+
 const supabase = useSupabaseClient();
 const actionStore = useActionsStore();
 
-
-
-onMounted(() => {
-    actionStore.checkIfMealExist()
-})
-
-
-
 const addItem = (): void => {
-
+    actionStore.addProduct(productId, quanity);
+    navigateTo("/dashboard");
 }
 </script>
 
