@@ -11,8 +11,16 @@
 <script setup lang="ts">
 import Meal from "./Meal.vue";
 import getMealsNames from "../../../utils/getters/getMealsNames";
+import { useActionsStore } from "~/stores/actions";
 
+const actionsStore = useActionsStore()
 const mealsList = getMealsNames();
+
+onMounted(async () => {
+    const meals = await actionsStore.getMeals().then((res) => { return res.data.value });
+
+    console.log(meals)
+})
 
 </script>
 

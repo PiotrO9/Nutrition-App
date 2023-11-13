@@ -12,16 +12,22 @@ export const useActionsStore = defineStore("actions", {
   actions: {
     async checkIfMealExist(): Promise<boolean> {
       const supabase = useSupabaseClient();
+      const mealStore = useMealStore();
+      mealStore.setMealDate();
 
       const userId = await supabase.auth.getUser().then((res) => {
         return res.data.user?.id as never;
       });
+
+      console.log(mealStore.getmealType);
 
       const { data, error } = await useAsyncData("meal", async () => {
         const { data } = await supabase
           .from("Meal")
           .select("*")
           .eq("user_id", userId)
+          .eq("meal_type", mealStore.getmealType)
+          .eq("date", mealStore.getMealDate)
           .limit(1);
 
         return data;
@@ -32,19 +38,25 @@ export const useActionsStore = defineStore("actions", {
         return true;
       }
 
-      return data.value ? true : false;
+      console.log(userId, mealStore.getmealType, mealStore.getMealDate);
+      console.log(Boolean(data.value?.length));
+      if (data.value?.length) {
+        return true;
+      } else {
+        return false;
+      }
     },
     async addProduct(productId: string, quanity: number): Promise<void> {
       const supabase = useSupabaseClient();
       const mealStore = useMealStore();
-      let mealId: uuidv4 = 0;
+      let mealId = "";
 
       const userId = await supabase.auth.getUser().then((res) => {
         return res.data.user?.id as never;
       });
 
-      if (await !this.checkIfMealExist()) {
-        const mealId = uuidv4();
+      if (!(await this.checkIfMealExist())) {
+        mealId = uuidv4();
         const mealType = mealStore.getmealType;
         mealStore.setMealDate();
         const mealDate = mealStore.getMealDate;
@@ -62,16 +74,20 @@ export const useActionsStore = defineStore("actions", {
         if (error.value) {
           console.log(error.value);
         }
-
-        console.log(data.value);
       } else {
+        const mealNumber = mealStore.mealType;
+
         const { data, error } = await useAsyncData("meal", async () => {
           mealStore.setMealDate();
           const { data } = await supabase
             .from("Meal")
             .select("*")
             .eq("user_id", userId)
-            .eq("date", mealStore.getMealDate);
+            .eq("date", mealStore.getMealDate)
+            .eq("meal_type", mealNumber)
+            .limit(1);
+
+          return data;
         });
 
         if (error.value) {
@@ -79,11 +95,12 @@ export const useActionsStore = defineStore("actions", {
         }
 
         if (data.value) {
-          mealId = data.value[0].meal_id as uuidv4;
+          mealId = data.value[0].meal_id;
         }
       }
 
       const { data } = await useAsyncData("meal", async () => {
+        console.log(mealId);
         const FoodObject = {
           meal_id: mealId,
           product_id: productId,
@@ -92,8 +109,34 @@ export const useActionsStore = defineStore("actions", {
 
         const { data } = await supabase.from("Food").insert(FoodObject);
       });
+    },
+    async getMeals(): Promise<any> {
+      const supabase = useSupabaseClient();
+      const mealStore = useMealStore();
 
-      console.log(data.value);
+      const userId = await supabase.auth.getUser().then((res) => {
+        return res.data.user?.id as never;
+      });
+
+      return await useAsyncData("meals", async () => {
+        mealStore.setMealDate();
+        const date = mealStore.getMealDate;
+
+        const { data, error } = await supabase
+          .from("Meal")
+          .select("*")
+          .eq("user_id", userId)
+          .eq("date", date)
+          .then((res) => {
+            return res;
+          });
+
+        if (error) {
+          console.log(error);
+        }
+
+        return data;
+      });
     },
   },
 });

@@ -21,7 +21,6 @@ export const useMealStore = defineStore("meal", {
         .padStart(2, "0")}-${today.getDate().toString().padStart(2, "0")}`;
 
       this.mealDate = formattedDate;
-      console.log(this.mealDate);
     },
   },
   getters: {
