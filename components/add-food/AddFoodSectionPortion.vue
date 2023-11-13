@@ -10,7 +10,7 @@
             37 kcal
         </div>
         <div class="add-food-section__portion--action row">
-            <div class="wrapper">
+            <div class="wrapper" @click="addItem">
                 <Icon name="tabler:chevron-right" class="icon" />
             </div>
         </div>
@@ -18,7 +18,22 @@
 </template>
 
 <script setup lang="ts">
+import { useActionsStore } from "~/stores/actions";
 
+const supabase = useSupabaseClient();
+const actionStore = useActionsStore();
+
+
+
+onMounted(() => {
+    actionStore.checkIfMealExist()
+})
+
+
+
+const addItem = (): void => {
+
+}
 </script>
 
 <style scoped lang="scss">

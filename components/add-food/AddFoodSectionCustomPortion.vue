@@ -25,7 +25,7 @@ const actionStore = useActionsStore();
 const supabase = useSupabaseClient()
 
 onMounted(() => {
-    actionStore.addItems()
+    actionStore.addProduct()
 })
 
 </script>

@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-const results: string[] = ["test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test"];
+const results: string[] = ["test"];
 </script>
 
 <style scoped lang="scss">

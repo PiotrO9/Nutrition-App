@@ -25,9 +25,13 @@
 </template>
 
 <script setup lang="ts">
-const { mealName } = defineProps(["mealName"]);
+import { useMealStore } from '~/stores/meal';
+const { mealName, mealId } = defineProps(["mealName", "mealId"]);
+
+const mealStore = useMealStore()
 
 const addFood = (): void => {
+    mealStore.setmealType(mealId)
     navigateTo("/add-meal")
 }
 </script>

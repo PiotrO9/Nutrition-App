@@ -2,7 +2,7 @@
     <div class="meals">
         <div class="meals__wrapper">
             <ul class="meals-list">
-                <Meal v-for="meal in mealsList" :key="meal" :mealName="meal" />
+                <Meal v-for="(meal, id) in mealsList" :key="meal" :mealName="meal" :mealId="id" />
             </ul>
         </div>
     </div>

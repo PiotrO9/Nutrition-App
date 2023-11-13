@@ -38,7 +38,7 @@ onMounted(() => {
     &.has-footer {
         bottom: 60px;
 
-        @include breakpoint-up(medium) {
+        @include breakpoint-up(md) {
             bottom: 90px;
         }
     }
