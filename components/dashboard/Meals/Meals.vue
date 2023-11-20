@@ -12,6 +12,7 @@
 import Meal from "./Meal.vue";
 import getMealsNames from "../../../utils/getters/getMealsNames";
 import { useActionsStore } from "~/stores/actions";
+import getTodaysMealsDatas from "~/utils/fetch/meals/getTodaysMealsDatas";
 
 const actionsStore = useActionsStore()
 const mealsList = getMealsNames();
@@ -20,6 +21,10 @@ onMounted(async () => {
     const meals = await actionsStore.getMeals().then((res) => { return res.data.value });
 
     console.log(meals)
+
+    const datas = await getTodaysMealsDatas();
+
+    console.log(datas)
 })
 
 </script>

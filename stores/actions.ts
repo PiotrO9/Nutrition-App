@@ -138,5 +138,29 @@ export const useActionsStore = defineStore("actions", {
         return data;
       });
     },
+    async getFoodByMealId(mealId: string): Promise<any> {
+      const supabase = useSupabaseClient();
+
+      const userId = await supabase.auth.getUser().then((res) => {
+        return res.data.user?.id as never;
+      });
+
+      return await useAsyncData("foods", async () => {
+        const { data, error } = await supabase
+          .from("Food")
+          .select("*")
+          .eq("meal_id", mealId)
+          .then((res) => {
+            return res;
+          });
+
+        if (error) {
+          console.log(error);
+        }
+
+        console.log("Data: ", data);
+        return data;
+      });
+    },
   },
 });
